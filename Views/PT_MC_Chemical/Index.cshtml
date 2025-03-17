@@ -1,0 +1,111 @@
+﻿@model WebApplication2.Models.Entity.PT_MC_ChemicalInfo
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Protek 1</h2>
+
+@using (Html.BeginForm("Save", "PT_MC_ChemicalController", FormMethod.Post))
+{
+
+
+    <div class="editor-field">
+        @Html.Label("Machine Code :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.MACHINE_CODE, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.MACHINE_CODE, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Part Number :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.PART_NO, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.PART_NO, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Chemical Name :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.CHEMICAL_NAME, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CHEMICAL_NAME, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Chemical Tank :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.CHEMICAL_TANK, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CHEMICAL_TANK, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("UoM :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.UNIT_MEAS, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.UNIT_MEAS, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Volume :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.VOL, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.VOL, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("High control range :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.CTRL_HIGH, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CTRL_HIGH, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Action High :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.ACT_HIGH, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ACT_HIGH, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Median control range :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.CTRL_MEDIAN, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CTRL_MEDIAN, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Action chemical supply :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.ACT_CHE_SPY, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ACT_CHE_SPY, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Action Low :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.ACT_LOW, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ACT_LOW, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Low control range :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.CTRL_LOW, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CTRL_LOW, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Opimum value :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.OPTIMUM, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.OPTIMUM, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Replenishment calculation :", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.REP_POINT, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.REP_POINT, "", new { @class = "text-danger" })
+    </div>
+    <br>
+    <div class="editor-field">
+        @Html.Label("Working formala :", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.WORK_FORMULA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.WORK_FORMULA, "", new { @class = "text-danger" })
+        </div>
+        <br>
+    <div class="editor-field">
+        @Html.LabelFor(m => m.REVISE_DATE, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.REVISE_DATE, "{0:yyyy-MM-ddThh:mm:ss}", new { @class = "form-control", type = "datetime-local" })
+            @Html.ValidationMessageFor(m => m.REVISE_DATE, "", new { @class = "text-danger" })
+        </div>
+
+        <br />
+        <input type="submit" value="Save" />
+      
+}

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication2.Models.Entity.Work>
+
+@{
+    ViewBag.Title = "WebGridTableExample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>WebGridTableExample</h2>
+
+
+    <style>
+        #Table {
+            width: auto;
+            height: auto;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+    </style>
+
+    <h2>WebGridTableExample</h2>
+    <h2>Basic Web Grid</h2>
+    <div id="Table">
+        @{
+            var grid = new WebGrid(Model, defaultSort: "Id");
+        }
+        @grid.GetHtml()
+    </div>
+

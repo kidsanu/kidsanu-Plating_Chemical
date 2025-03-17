@@ -1,0 +1,742 @@
+﻿@model WebApplication2.Models.Entity.PT_MC_InputResult
+
+
+@{
+    ViewBag.Title = "SaveProtek7";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/themes/My.css" rel="stylesheet" />
+@*<h2>SaveProtek2</h2>*@
+<h3>@ViewBag.Message</h3>
+<script>
+    var showAlert = "@ViewBag.showAlert";
+    var alertMessage = "@ViewBag.alertMessage";
+    if (showAlert === "True") {
+   alert(alertMessage);
+    //} else {
+    //    alert("Something wrong.");
+    }
+
+
+
+</script>
+
+
+<script>
+    function Postsubmit() {
+        var result = confirm("Are your sure. Do you want to save?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Day",
+        Value = "Day"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Nigth",
+        Value = "Nigth",
+
+    });
+}
+@{
+    List<SelectListItem> listItemsTime = new List<SelectListItem>();
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "02:00",
+        Value = "02:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "06:00",
+        Value = "06:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "10:00",
+        Value = "10:00"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "14:00",
+        Value = "14:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "18:00",
+        Value = "18:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "22:00",
+        Value = "22:00"
+    });
+
+}
+
+<script>
+    function Postsubmit() {
+        var result = confirm("Are your sure. Do you want to save?");
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    function sum_no1() {
+        var txtFirstNo = document.getElementById('txtFirstNo').value;
+        var result = parseFloat(txtFirstNo) * 0.1 / 2;
+        if (!isNaN(result)) {
+            document.getElementById('txtResult').value = result.toFixed(2);
+        }
+    }
+    function sum_no2() {
+        var txtTritrate2 = document.getElementById('txtTritrate2').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate2) * 0.556;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal2').value = result.toFixed(2);
+        }
+    }
+    function sum_no3() {
+        var txtTritrate3 = document.getElementById('txtTritrate3').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate3) * 12.5;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal3').value = result.toFixed(2);
+        }
+    }
+    function sum_no4() {
+        var txtTritrate4 = document.getElementById('txtTritrate4').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate4) * 24.5;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal4').value = result.toFixed(2);
+        }
+    }
+    function sum_no5() {
+        var txtTritrate5 = document.getElementById('txtTritrate5').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate5) * 140.86;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal5').value = result.toFixed(2);
+        }
+    }
+    function sum_no6() {
+        var txtTritrate6 = document.getElementById('txtTritrate6').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate6);
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal6').value = result.toFixed(2);
+        }
+    }
+    function sum_no7() {
+        var txtTritrate7 = document.getElementById('txtTritrate7').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate7);
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal7').value = result.toFixed(2);
+        }
+    }
+    function sum_no8() {
+        var txtTritrate8 = document.getElementById('txtTritrate8').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate8) * 4.28;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal8').value = result.toFixed(2);
+        }
+    }
+    //function sum_no9() {
+    //    var txtTritrate9 = document.getElementById('txtTritrate9').value;
+        //    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+    //    var result = parseFloat(txtTritrate9) ;
+    //    if (!isNaN(result)) {
+    //        document.getElementById('txtResultCal9').value = result.toFixed(2);
+    //    }
+    //}
+    function sum_no10() {
+        var txtTritrate10 = document.getElementById('txtTritrate10').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate10) * 27.5;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal10').value = result.toFixed(2);
+        }
+    }
+
+    function sum_no11() {
+        var txtTritrate11 = document.getElementById('txtTritrate11').value;
+        //var txtSecondNo = document.getElementById('txtSecondNo').value;
+        var result = parseFloat(txtTritrate11) * 3.2 * 0.05;
+        if (!isNaN(result)) {
+            document.getElementById('txtResultCal11').value = result.toFixed(2);
+        }
+    }
+</script>
+
+
+@if (TempData["testmsg"] != null)
+{
+    @Html.Raw(TempData["testmsg"])
+}
+
+<h2>Input Analysis Result Protek 7. </h2>
+
+@using (Html.BeginForm("SaveProtek7", "PT_MC_Chemical", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMPLOYEE_CODE, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EMPLOYEE_CODE, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EMPLOYEE_CODE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMPLOYEE_NAME, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @ViewBag.Name
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATED, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATED, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DATED, "", new { @type = "datetime-local" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SHIFT, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SHIFT, listItems, "-- Select Shift --")
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TIMED, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.TIMED, listItemsTime, "-- Select Time --")
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    @*<div class="panel panel-body">
+            <div align="center" class="panel-body">ELECTRIC</div>
+        </div>*@
+
+
+    @*<p align="center"><strong><span style="FONT-SIZE: 14pt">ELECTRIC</span></strong></p>*@
+    <p align="left"><strong><span style="FONT-SIZE: 8pt">Protek 7</span></strong></p>
+    <table class="taskList" style="WIDTH: 100%; BORDER-COLLAPSE: collapse" bordercolor="#bbbbbb" cellspacing="0" cellpadding="3" align="center" border="1">
+        <thead>
+            <tr>
+                <th style="WIDTH: 5%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">No.</th>
+                <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Chemical Tank</th>
+                <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Analysis Item</th>
+                <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Tritrate</th>
+                <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Work</th>
+                @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Rep.Calc</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">ActualSupply</th>*@
+                <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Remark</th>
+                @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Calculation</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Save</th>*@
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>1.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.TRITRATE, new { @Value = (Model.TRITRATE > 0 ? Model.TRITRATE.ToString() : string.Empty) })*@
+
+                    <input type="text" id="txtFirstNo" name="Tritrate1" placeholder="Tritrate" onkeyup="sum_no1()" />
+
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*<input type="text" class="form-control" value="@ViewBag.Working01" />*@
+
+                    @*@Html.EditorFor(model => model.strWorkPT2[0], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResult" name="ResultCal" placeholder="Working" />
+
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+
+                @*@Html.EditorFor(model => model.strRepPT2[0], new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @*<input type="text" class="form-control" value="@ViewBag.Rep_Cal01" />*@
+
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @*<input type="text" class="form-control" value="@ViewBag.Result1" />*@
+
+                @*</td>*@
+
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+
+                    @Html.EditorFor(model => model.strRemarkPT7[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+
+                @*<input type="submit" name="Cal1" value="Cal 1" class="btn btn-primary" />*@
+
+                @*<input type="submit" value="Cal PT1" formaction="CalFormula" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.CheckBoxFor(m => m.bolSave, false)*@
+                @*@Html.CheckBoxFor(model => model.bolSave[0])*@
+
+
+                @*<input type="submit" name="Save1" value="Save 1" class="btn btn-primary" />*@
+
+                @*<input type="submit" name="Save1" value="Save 1" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>2.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE2, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate2" name="Tritrate2" placeholder="Tritrate" onkeyup="sum_no2()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[1], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal2" name="ResultCal2" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[1], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY2, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal2" value="Cal 2" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save2" value="Save 2" class="btn btn-primary" />*@
+                @*<input type="submit" name="Save2" value="Save 2" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>3.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE3, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate3" name="Tritrate3" placeholder="Tritrate" onkeyup="sum_no3()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[2], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal3" name="ResultCal3" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[2], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY3, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal3" value="Cal 3" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save3" value="Save 3" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>4.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE4, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate4" name="Tritrate4" placeholder="Tritrate" onkeyup="sum_no4()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[3], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal4" name="ResultCal4" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[3], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY4, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal4" value="Cal 4" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save4" value="Save 4" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>5.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE5, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate5" name="Tritrate5" placeholder="Tritrate" onkeyup="sum_no5()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[4], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal5" name="ResultCal5" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[4], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY5, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal5" value="Cal 5" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save5" value="Save 5" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>6.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE6, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate6" name="Tritrate6" placeholder="Tritrate" onkeyup="sum_no6()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[5], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal6" name="ResultCal6" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[5], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY6, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal6" value="Cal 6" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save6" value="Save 6" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>7.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate7" name="Tritrate7" placeholder="Tritrate" onkeyup="sum_no7()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[6], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal7" name="ResultCal7" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[6], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY7, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal7" value="Cal 7" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save7" value="Save 7" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>8.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE8, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate8" name="Tritrate8" placeholder="Tritrate" onkeyup="sum_no8()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[7], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal8" name="ResultCal8" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRepPT2[7], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY8, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal8" value="Cal 8" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save8" value="Save 8" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>9.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE9, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate9" name="Tritrate9" placeholder="Tritrate" onkeyup="sum_no9()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.strWorkPT2[8], new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWork[8], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal9" name="ResultCal9" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.strRepPT2[8], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.strRep[8], new { htmlAttributes = new { @class = "form-control" } })*@
+
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY9, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*<input type="text" name="Property1" value="@Model.ACTUAL_SUPPLY9" />*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal9" value="Cal 9" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Save9" value="Save 9" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+                @*</td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>10.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE10, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate10" name="Tritrate10" placeholder="Tritrate" onkeyup="sum_no10()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.WORKING10, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal10" name="ResultCal10" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.REP_CALC10, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY10, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*<input type="submit" name="Cal10" value="Cal 10" class="btn btn-primary" />*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">
+                        <input type="submit" name="Save10" value="Save 10" class="btn btn-primary" onclick="javascript:return Postsubmit();" />
+                    </td>*@
+            </tr>
+            <tr>
+                <td style="WIDTH: 5%; TEXT-ALIGN: center">
+                    <h5>11.</h5>
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strchemicalTankPT7[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.stranalysisItemPT7[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.TRITRATE11, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtTritrate11" name="Tritrate11" placeholder="Tritrate" onkeyup="sum_no11()" />
+                </td>
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.EditorFor(model => model.strWorkPT2[10], new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" id="txtResultCal11" name="ResultCal11" placeholder="Working" />
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.strRepPT2[10], new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">*@
+                @*@Html.EditorFor(model => model.ACTUAL_SUPPLY11, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*</td>*@
+                <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                    @Html.EditorFor(model => model.strRemarkPT7[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+                @*<td style="WIDTH: 20%; TEXT-ALIGN: center">
+                        <input type="submit" name="Cal11" value="Cal 11" class="btn btn-primary" />
+                    </td>
+                    <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                        <input type="submit" name="Save11" value="Save 11" class="btn btn-primary" onclick="javascript:return Postsubmit();" />
+                    </td>*@
+            </tr>
+
+        </tbody>
+
+
+
+    </table>
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+
+
+            @*< input type="submit" id="fileUploadExcel" value="POST" >Save</button>*@
+
+            @*<input type="submit" class="btn btn-primary" name="FileUpload" id="fileUploadExcel" value="POST" />*@
+
+
+            <button class="btn info" onclick="javascript:return Postsubmit();">Save</button>
+            @*<button class="btn danger">Cancel</button>*@
+
+            <input type="submit" name="Cancel" value="Cancel" class="btn danger" />
+
+            @*<input type="submit" class="btn btn-primary" name="UploadNewEmployee" id="fileUploadExcel" value="POST" />*@
+
+            @*<div class="col-xs-2">
+
+
+                </div>*@
+            @*<input type="submit" value="Create" class="btn btn-default" />*@
+
+            @*<input type="submit" name="Save" value="Save" class="btn btn-primary" onclick="javascript:return Postsubmit();" />*@
+
+        </div>
+    </div>
+
+
+
+
+}
+<div>
+    @Html.ActionLink("Back to List", "InputAnalysisProtek7")
+</div>
+

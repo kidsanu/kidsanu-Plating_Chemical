@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebApplication2.Models.Entity.PT_MC_InputResult>
+
+@{
+    ViewBag.Title = "InputAnalysisProtek2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Input Analysis Result Protek 2.</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SaveProtek2")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANSACTION_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MACHINE_CODE)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PART_NO)
+        </th>*@
+
+        <th>
+            @Html.DisplayNameFor(model => model.DATED_APPLIED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIMED)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.TRITRATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WORKING)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_CALC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTUAL_SUPPLY)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLOYEE_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLOYEE_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANSACTION_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MACHINE_CODE)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.PART_NO)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DATED_APPLIED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIMED)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.TRITRATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WORKING)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REP_CALC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACTUAL_SUPPLY)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.EMPLOYEE_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMPLOYEE_NAME)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "SaveProtek1", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Details", "DetailInputProtek2", new { id = item.TRANSACTION_ID })
+                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,472 @@
+﻿@model WebApplication2.Models.Entity.PT_MC_InputResult
+
+@{
+    ViewBag.Title = "CalFormula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Day",
+        Value = "Day"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Nigth",
+        Value = "Nigth",
+
+    });
+}
+@{
+    List<SelectListItem> listItemsTime = new List<SelectListItem>();
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "02:00",
+        Value = "02:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "06:00",
+        Value = "06:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "10:00",
+        Value = "10:00"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "18:00",
+        Value = "18:00",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "22:00",
+        Value = "22:00"
+    });
+
+}
+<h2>SaveProtek1</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMPLOYEE_CODE, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EMPLOYEE_CODE, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EMPLOYEE_CODE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATED, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DATED, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DATED, "", new { @type = "datetime-local" })
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.MACHINE_CODE, htmlAttributes: new { @class = "control-label col-md-8" })*@
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.MACHINE_CODE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MACHINE_CODE, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SHIFT, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.SHIFT, listItems, "-- Select Shift --")
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TIMED, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.TIMED, listItemsTime, "-- Select Time --")
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="panel panel-body">
+        <div align="center" class="panel-body">ELECTRIC</div>
+    </div>
+
+            @*<p align="center"><strong><span style="FONT-SIZE: 14pt">ELECTRIC</span></strong></p>*@
+            <p align="left"><strong><span style="FONT-SIZE: 8pt">Protek 1</span></strong></p>
+            <table class="taskList" style="WIDTH: 100%; BORDER-COLLAPSE: collapse" bordercolor="#bbbbbb" cellspacing="0" cellpadding="3" align="center" border="1">
+                <thead>
+                    <tr>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Chemical Tank</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Analysis Item</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Tritrate</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Work</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Rep. Calc</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Replenishmen</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Remark</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Calculation</th>
+                        <th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Save</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.EditorFor(model => model.TRITRATE, new { @Value = (Model.TRITRATE > 0 ? Model.TRITRATE.ToString() : string.Empty) })*@
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @*@Html.TextBoxFor(model => model.ACTUAL_SUPPLY)*@
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY, new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+
+                            @Html.EditorFor(model => model.strRemark[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal PT1" formaction="CalFormula" class="btn btn-primary" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE2, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY2, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE3, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY3, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE4, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY4, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE5, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY5, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE6, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY6, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY7, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE8, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY8, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE9, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY9, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE10, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY10, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strchemicalTank[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.stranalysisItem[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.TRITRATE11, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.REP_CALC, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.ACTUAL_SUPPLY11, new { htmlAttributes = new { @class = "form-control" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.EditorFor(model => model.strRemark[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            <input type="submit" value="Cal" class="btn btn-default" />
+                        </td>
+                        <td style="WIDTH: 20%; TEXT-ALIGN: center">
+                            @Html.CheckBoxFor(m => m.bolSave, false)
+                        </td>
+                    </tr>
+                </tbody>
+
+
+
+            </table><br />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+
+
+
+
+
+}
+<div>
+    @Html.ActionLink("Back to List", "InputAnalysis")
+</div>
+
+

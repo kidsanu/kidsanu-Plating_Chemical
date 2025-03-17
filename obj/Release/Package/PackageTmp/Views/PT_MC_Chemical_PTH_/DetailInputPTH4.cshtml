@@ -1,0 +1,981 @@
+﻿@model WebApplication2.Models.Entity.PT_MC_PTH_InputResult
+
+@{
+    ViewBag.Title = "SavePTH4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="~/Content/assets/css/layout_2.css" rel="stylesheet" type="text/css" />*@
+<link href="~/Content/themes/My.css" rel="stylesheet" />
+@*<script>
+
+            function calculateAmount(val) {
+                var price = val * 1;
+                /*display the result*/
+                var tot_price = price + (price * 0.18);
+                var divobj = document.getElementById('tot_amount');
+                divobj.value = tot_price;
+            }
+    </script>*@
+
+
+@*<h2>@ViewBag.Title.</h2>*@
+<h3>@ViewBag.Message</h3>
+<script>
+    var showAlert = "@ViewBag.showAlert";
+    var alertMessage = "@ViewBag.alertMessage";
+    if (showAlert === "True") {
+   alert(alertMessage);
+    //} else {
+    //    alert("Something wrong.");
+    }
+
+
+</script>
+
+
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Day",
+        Value = "Day"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Nigth",
+        Value = "Nigth",
+
+    });
+}
+@{
+    List<SelectListItem> listItemsTime = new List<SelectListItem>();
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "00:30",
+        Value = "00:30",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "02:30",
+        Value = "02:30",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "04:30",
+        Value = "04:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "06:30",
+        Value = "06:30",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "08:30",
+        Value = "08:30",
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "10:30",
+        Value = "10:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "12:30",
+        Value = "12:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "14:30",
+        Value = "14:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "16:30",
+        Value = "16:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "18:30",
+        Value = "18:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "20:30",
+        Value = "20:30"
+    });
+    listItemsTime.Add(new SelectListItem
+    {
+        Text = "22:30",
+        Value = "22:30"
+    });
+
+
+}
+
+<script>
+        function PostsubmitDelete() {
+            var result = confirm("Are your sure. Do you want to Delete ?");
+            if (result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+</script>
+
+
+
+@if (TempData["testmsg"] != null)
+{
+    @Html.Raw(TempData["testmsg"])
+}
+
+
+    @*"SaveProtek1", "PT_MC_Chemical"*@
+
+    <h2>History Input Analysis Result PTH 4</h2>
+
+    @using (Html.BeginForm("DetailInputPTH4", "PT_MC_Chemical_PTH_", FormMethod.Post))
+
+    {
+
+        @Html.AntiForgeryToken()
+
+
+        <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+
+
+        <script type="text/javascript">
+                function sum_no1() {
+                    var txtFirstNo = document.getElementById('txtFirstNo').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtFirstNo * 14.18) + 0.057;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResult').value = result.toFixed(2);
+                    }
+                }
+                function sum_no2() {
+                    var txtTritrate2 = document.getElementById('txtTritrate2').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate2 * 0.01625) * (146/5);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal2').value = result.toFixed(2);
+                    }
+                }
+                function sum_no3() {
+                    var txtTritrate3 = document.getElementById('txtTritrate3').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate3 * 0.1) * (40/5);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal3').value = result.toFixed(2);
+                    }
+                }
+                function sum_no4() {
+                    var txtTritrate4 = document.getElementById('txtTritrate4').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate4 * 0.1) * (30/5);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal4').value = result.toFixed(2);
+                    }
+                }
+                function sum_no5() {
+                    var txtTritrate5 = document.getElementById('txtTritrate5').value;
+                    var txtSTD5 = document.getElementById('txtSTD5').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtSTD5 - txtTritrate5) * 114 * 0.1;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal5').value = result.toFixed(2);
+                    }
+                }
+                function sum_no6() {
+                    var txtTritrate6 = document.getElementById('txtTritrate6').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate6 * 0.05 * 63.54) / 5;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal6').value = result.toFixed(2);
+                    }
+                }
+                function sum_no7() {
+                    var txtTritrate7 = document.getElementById('txtTritrate7').value;
+                    var txtSTD7 = document.getElementById('txtSTD7').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtSTD7 - txtTritrate7) * 114 * 0.1;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal7').value = result.toFixed(2);
+                    }
+                }
+                function sum_no8() {
+                    var txtTritrate8 = document.getElementById('txtTritrate8').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate8 * 0.05 * 63.54) / 5;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal8').value = result.toFixed(2);
+                    }
+                }
+                function sum_no9() {
+                    var txtTritrate9 = document.getElementById('txtTritrate9').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate9 * 327 * 5) / 10;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal9').value = result.toFixed(2);
+                    }
+                }
+                function sum_no10() {
+                    var txtTritrate10 = document.getElementById('txtTritrate10').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate10 * 0.05 * 63.54) / 10;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal10').value = result.toFixed(2);
+                    }
+                }
+                function sum_no11() {
+                    var txtTritrate11 = document.getElementById('txtTritrate11').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate11 * 0.556);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal11').value = result.toFixed(2);
+                    }
+                }
+                function sum_no12() {
+                    var txtTritrate12 = document.getElementById('txtTritrate12').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate12 * 0.556);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal12').value = result.toFixed(2);
+                    }
+                }
+                function sum_no13() {
+                    var txtTritrate13 = document.getElementById('txtTritrate13').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate13);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal13').value = result.toFixed(2);
+                    }
+                }
+                function sum_no14() {
+                    var txtTritrate14 = document.getElementById('txtTritrate14').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate14 * 0.05 * 63.54) / 10;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal14').value = result.toFixed(2);
+                    }
+                }
+                function sum_no15() {
+                    var txtTritrate15 = document.getElementById('txtTritrate15').value;
+                    //var txtSecondNo = document.getElementById('txtSecondNo').value;
+                    var result = parseFloat(txtTritrate15);
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal15').value = result.toFixed(2);
+                    }
+                }
+                function sum_no16() {
+                    var txtTritrate16 = document.getElementById('txtTritrate16').value;
+                    var result = parseFloat((txtTritrate16 * 105) + 3.6) * 0.48 / 100;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal16').value = result.toFixed(2);
+                    }
+                }
+                function sum_no17() {
+                    var txtTritrate17 = document.getElementById('txtTritrate17').value;
+                    var result = parseFloat(txtTritrate17 * 0.1 * 94.8) / 5;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal17').value = result.toFixed(2);
+                    }
+                }
+                function sum_no18() {
+                    var txtTritrate18 = document.getElementById('txtTritrate18').value;
+                    var result = parseFloat(txtTritrate18) / 20;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal18').value = result.toFixed(2);
+                    }
+                }
+                function sum_no19() {
+                    var txtTritrate19 = document.getElementById('txtTritrate19').value;
+                    var result = parseFloat(txtTritrate19) / 10;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal19').value = result.toFixed(2);
+                    }
+                }
+                function sum_no20() {
+                    var txtTritrate20 = document.getElementById('txtTritrate20').value;
+                    var result = parseFloat(txtTritrate20 * 0.05 * 63.54) / 10;
+                    if (!isNaN(result)) {
+                        document.getElementById('txtResultCal20').value = result.toFixed(2);
+                    }
+                }
+        </script>
+
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMPLOYEE_CODE, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EMPLOYEE_CODE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EMPLOYEE_CODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMPLOYEE_NAME, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-10">
+                        @ViewBag.Name
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DATED, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.DATED, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DATED, "", new { @type = "datetime-local" })*@
+                        @ViewBag.Dated
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIFT, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-10">
+                        @*@Html.DropDownListFor(model => model.SHIFT, listItems, "-- Select Shift --")*@
+                        @ViewBag.Shift
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIMED, htmlAttributes: new { @class = "control-label col-md-8" })
+                    <div class="col-md-10">
+                        @*@Html.DropDownListFor(model => model.TIMED, listItemsTime, "-- Select Time --")*@
+                        @ViewBag.Timed
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+
+        <p align="left"><strong><span style="FONT-SIZE: 8pt">PTH 4</span></strong></p>
+        <table class="taskList" style="WIDTH: 100%; BORDER-COLLAPSE: collapse" bordercolor="#bbbbbb" cellspacing="0" cellpadding="3" align="center" border="1">
+            <thead>
+                <tr>
+                    <th style="WIDTH: 5%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">No.</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Chemical Tank</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Analysis Item</th>
+                    <th style="WIDTH: 10%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Standard</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Tritrate</th>
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Work</th>
+                    @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Rep.Calc</th>*@
+                    @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Actual Supply</th>*@
+                    <th style="WIDTH: 20%; BACKGROUND-COLOR: #63B8FF; TEXT-ALIGN: center" scope="col">Remark</th>
+                    @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Calculation</th>*@
+                    @*<th style="WIDTH: 20%; BACKGROUND-COLOR: #d7e4ef; TEXT-ALIGN: center" scope="col">Save</th>*@
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="WIDTH: 5%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>1.</h5>
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD" name="STD1" placeholder="Standard"  />*@
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtFirstNo" name="Tritrate1" placeholder="Tritrate" onkeyup="sum_no1()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[0])
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[0])
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[0], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>2.</h5>
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD2" name="STD2" placeholder="Standard" />*@
+                    </td>
+
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.douTritratePTH[1])
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[1])
+                    </td>
+
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[1], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                <tr>
+                    <td style="WIDTH: 5%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>3.</h5>
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD3" name="STD3" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE3, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[2])
+                        @*<input type="text" id="txtTritrate3" name="Tritrate3" placeholder="Tritrate" onkeyup="sum_no3()" />*@
+
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[2], new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtResultCal3" name="ResultCal3" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[2])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[2], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>4.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD4" name="STD4" placeholder="Standard" />*@
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.douTritratePTH[3])
+
+                        @*@Html.EditorFor(model => model.TRITRATE4, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                        @*<input type="text" id="txtTritrate4" name="Tritrate4" placeholder="Tritrate" onkeyup="sum_no4()" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[3], new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtResultCal4" name="ResultCal4" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[3])
+
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[3], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>5.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD5" name="STD5" placeholder="Standard" onkeyup="sum_no5()" />*@
+                        @Html.TextBoxFor(model => model.douSTDPTH[4])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE5, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate5" name="Tritrate5" placeholder="Tritrate" onkeyup="sum_no5()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[4])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+
+                        @Html.TextBoxFor(model => model.strWorkPTH[4])
+
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[4], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>6.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD6" name="STD6" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE6, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate6" name="Tritrate6" placeholder="Tritrate" onkeyup="sum_no6()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[5])
+
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[5], new { htmlAttributes = new { @class = "form-control" } })*@
+
+                        @*<input type="text" id="txtResultCal6" name="ResultCal6" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[5])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[5], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>7.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD7" name="STD7" placeholder="Standard" onkeyup="sum_no7()" />*@
+                        @Html.TextBoxFor(model => model.douSTDPTH[6])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate7" name="Tritrate7" placeholder="Tritrate" onkeyup="sum_no7()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[6])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[6], new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtResultCal7" name="ResultCal7" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[6])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[6], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>8.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD8" name="STD8" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate8" name="Tritrate8" placeholder="Tritrate" onkeyup="sum_no8()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[7])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[6], new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtResultCal8" name="ResultCal8" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[7])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[7], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>9.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD9" name="STD9" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtTritrate9" name="Tritrate9" placeholder="Tritrate" onkeyup="sum_no9()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[8])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+
+                        @*<input type="text" id="txtResultCal9" name="ResultCal9" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[8])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[8], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>10.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center"></td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.douTritratePTH[9])
+                        @*<input type="text" id="txtTritrate10" name="Tritrate10" placeholder="Tritrate" onkeyup="sum_no10()" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[9])
+                        @*<input type="text" id="txtResultCal10" name="ResultCal10" placeholder="Working" />*@
+
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[9], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>11.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center"></td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.douTritratePTH[10])
+                        @*<input type="text" id="txtTritrate11" name="Tritrate11" placeholder="Tritrate" onkeyup="sum_no11()" />*@
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[10])
+                        @*<input type="text" id="txtResultCal11" name="ResultCal11" placeholder="Working" />*@
+
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[10], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>12.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[11], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[11], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD12" name="STD12" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtTritrate12" name="Tritrate12" placeholder="Tritrate" onkeyup="sum_no12()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[11])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtResultCal12" name="ResultCal12" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[11])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[11], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>13.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[12], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[12], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD13" name="STD13" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate13" name="Tritrate13" placeholder="Tritrate" onkeyup="sum_no13()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[12])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+
+                        @*<input type="text" id="txtResultCal13" name="ResultCal13" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[12])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[12], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>14.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[13], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[13], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD14" name="STD14" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate14" name="Tritrate14" placeholder="Tritrate" onkeyup="sum_no14()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[13])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[13])
+                        @*<input type="text" id="txtResultCal14" name="ResultCal14" placeholder="Working" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[13], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>15.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[14], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[14], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD15" name="STD15" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate15" name="Tritrate15" placeholder="Tritrate" onkeyup="sum_no15()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[14])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.WORKING, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.EditorFor(model => model.strWork[6], new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtResultCal15" name="ResultCal15" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[14])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[14], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>16.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[15], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[15], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD16" name="STD16" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*@Html.EditorFor(model => model.TRITRATE7, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*<input type="text" id="txtTritrate16" name="Tritrate16" placeholder="Tritrate" onkeyup="sum_no16()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[15])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtResultCal16" name="ResultCal16" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[15])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[15], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>17.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[16], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[16], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD17" name="STD17" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtTritrate17" name="Tritrate17" placeholder="Tritrate" onkeyup="sum_no17()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[16])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[16])
+                        @*<input type="text" id="txtResultCal17" name="ResultCal17" placeholder="Working" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[16], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>18.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[17], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[17], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD18" name="STD18" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtTritrate18" name="Tritrate18" placeholder="Tritrate" onkeyup="sum_no18()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[17])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtResultCal18" name="ResultCal18" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[17])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[17], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>19.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[18], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[18], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD19" name="STD19" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtTritrate19" name="Tritrate19" placeholder="Tritrate" onkeyup="sum_no19()" />*@
+                        @Html.TextBoxFor(model => model.douTritratePTH[18])
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtResultCal19" name="ResultCal19" placeholder="Working" />*@
+                        @Html.TextBoxFor(model => model.strWorkPTH[18])
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[18], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="WIDTH: 5%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        <h5>20.</h5>
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strchemicalTankPTH[19], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.stranalysisItemPTH[19], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+                    <td style="WIDTH: 20%; BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @*<input type="text" id="txtSTD20" name="STD20" placeholder="Standard" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.douTritratePTH[19])
+                        @*<input type="text" id="txtTritrate20" name="Tritrate20" placeholder="Tritrate" onkeyup="sum_no20()" />*@
+                    </td>
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.TextBoxFor(model => model.strWorkPTH[19])
+                        @*<input type="text" id="txtResultCal20" name="ResultCal20" placeholder="Working" />*@
+
+                    </td>
+
+                    <td style="WIDTH: 20%;BACKGROUND-COLOR: #C6E2FF; TEXT-ALIGN: center">
+                        @Html.EditorFor(model => model.strRemarkPTH[19], new { htmlAttributes = new { @readonly = "readonly" } })
+                    </td>
+
+                </tr>
+
+
+
+            </tbody>
+
+
+
+        </table><br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+
+                <input type="submit" onclick="javascript:return PostsubmitDelete();" class="btn danger" name="Delete" value="Delete" />
+
+
+
+            </div>
+        </div>
+
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "InputAnalysisPTH4")
+    </div>
+

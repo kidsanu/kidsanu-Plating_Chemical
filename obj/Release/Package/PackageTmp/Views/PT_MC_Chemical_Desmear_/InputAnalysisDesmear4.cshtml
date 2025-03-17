@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication2.Models.Entity.PT_MC_DESMEAR_InputResult>
+
+@{
+    ViewBag.Title = "InputAnalysisDesmear4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Input Analysis Result Desmear 4</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SaveDesmear4")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANSACTION_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MACHINE_CODE)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.DATED_APPLIED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIMED)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLOYEE_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMPLOYEE_NAME)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANSACTION_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MACHINE_CODE)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DATED_APPLIED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIMED)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EMPLOYEE_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMPLOYEE_NAME)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "DetailInputDesmear4", new { id = item.TRANSACTION_ID })
+
+            </td>
+        </tr>
+    }
+
+</table>

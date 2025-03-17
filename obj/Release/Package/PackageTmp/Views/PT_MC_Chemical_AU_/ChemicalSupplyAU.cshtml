@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WebApplication2.Models.Entity.PT_MC_ChemicalInfo>
+
+@{
+    ViewBag.Title = "ChemicalSupplyAU";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Master Data Maintenance AU</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChemicalSupplyAU</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PART_NO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MACHINE_CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CHEMICAL_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CHEMICAL_TANK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UNIT_MEAS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VOL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CTRL_HIGH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACT_HIGH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CTRL_MEDIAN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACT_CHE_SPY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACT_LOW)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CTRL_LOW)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OPTIMUM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REP_POINT)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.REMARK)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PART_NO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MACHINE_CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CHEMICAL_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CHEMICAL_TANK)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UNIT_MEAS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VOL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTRL_HIGH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACT_HIGH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTRL_MEDIAN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACT_CHE_SPY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACT_LOW)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CTRL_LOW)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OPTIMUM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REP_POINT)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.REMARK)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

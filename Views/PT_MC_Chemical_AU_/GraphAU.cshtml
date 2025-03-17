@@ -1,0 +1,2308 @@
+﻿@model WebApplication2.Models.Entity.PT_MC_AU_InputResult
+
+@{
+    ViewBag.Title = "AU";
+
+}
+
+<h2>Graph AU</h2>
+
+@{
+    ViewBag.Title = "Graph AU";
+}
+
+
+<form>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                @*@Html.Label("Chemical Name :", htmlAttributes: new { @class = "control-label col-md-8" })*@
+                <div class="col-md-10">
+                    @*@Html.DropDownListFor(m => m.PART_NO, selectList, "--Select Chemical--", new { @class = "css-class" })*@
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+
+
+                @Html.LabelFor(model => model.START_DATED, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.START_DATED, new { type = "month" })
+                    @Html.ValidationMessageFor(model => model.START_DATED, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button class="btn btn-primary" type="submit">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</form>
+
+
+
+<div>
+    <h2>1.Cleaner ACL-009(Clener conc.)</h2>
+</div>
+@*<div id="Table">
+    @{*@
+
+<script src="../Scripts/Chart.min.js"></script>
+
+@*<script src="../Scripts/Chart.js"></script>*@
+
+@*<canvas id="myChart"></canvas>*@
+<canvas id="myChart"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyCleaner_ACL_009);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHCleaner_ACL_009);
+        var jsM = @Html.Raw(ViewBag.jsonMCleaner_ACL_009);
+        var jsL = @Html.Raw(ViewBag.jsonLCleaner_ACL_009);
+
+
+        var ctx = document.getElementById("myChart");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Cleaner ACL-009'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '41-59',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 60.00,
+                            min: 40.00,
+                            stepSize: 1.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+@*}
+
+    </div>*@
+
+
+
+
+
+@*<style>
+        #Table {
+            width: auto;
+            height: auto;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
+    </style>*@
+
+<div>
+    <h2>2.Aciddip1</h2>
+</div>
+@*<div id="Table">
+    @{*@
+
+<script src="../Scripts/Chart.min.js"></script>
+
+@*<canvas id="myChart2"></canvas>*@
+
+<canvas id="myChart2"></canvas>
+
+@*<canvas id="myChart2" height:"40vh" width:"80vw"></canvas>*@
+<script>
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAciddip1);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHAciddip1);
+        var jsM = @Html.Raw(ViewBag.jsonMAciddip1);
+        var jsL = @Html.Raw(ViewBag.jsonLAciddip1);
+
+
+        var ctx = document.getElementById("myChart2");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Acid dip 1'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 5
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '(22 - 38)',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 40.00,
+                            min: 20.00,
+                            stepSize: 2.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+@*}
+
+    </div>*@
+<div>
+    <h2>3.Aciddip 2</h2>
+</div>
+<script src="../Scripts/Chart.min.js"></script>
+
+<canvas id="myChart3" width="1024"></canvas>
+
+<script>
+
+
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAciddip2);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHAciddip2);
+        var jsM = @Html.Raw(ViewBag.jsonMAciddip2);
+        var jsL = @Html.Raw(ViewBag.jsonLAciddip2);
+
+
+        var ctx = document.getElementById("myChart3");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Acid dip 2'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 5
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '22 - 38',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 40.00,
+                            min: 20.00,
+                            stepSize: 2.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>4.Predip</h2>
+</div>
+<script src="../Scripts/Chart.min.js"></script>
+
+<canvas id="myChart4" width="1024"></canvas>
+
+<script>
+
+
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyPredip);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHPredip);
+        var jsM = @Html.Raw(ViewBag.jsonMPredip);
+        var jsL = @Html.Raw(ViewBag.jsonLPredip);
+
+
+        var ctx = document.getElementById("myChart4");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Predip'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 5
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '6 - 14',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 15.00,
+                            min: 5.00,
+                            stepSize: 1.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+<div>
+    <h2>5.Soft Etch (APS)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+@*<script src="../Scripts/Chart.js"></script>*@
+
+@*<canvas id="myChart"></canvas>*@
+<canvas id="myChart5"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailySoftEtch_APS);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHSoftEtch_APS);
+        var jsM = @Html.Raw(ViewBag.jsonMSoftEtch_APS);
+        var jsL = @Html.Raw(ViewBag.jsonLSoftEtch_APS);
+
+
+        var ctx = document.getElementById("myChart5");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 3,
+                    pointHoverRadius: 7,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Soft Etch (APS)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 5
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '132 - 168',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 100.00,
+                            min: 50.00,
+                            stepSize: 10.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+
+<div>
+    <h2>6.Soft Etch (H2SO4) </h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+@*<script src="../Scripts/Chart.js"></script>*@
+
+@*<canvas id="myChart"></canvas>*@
+<canvas id="myChart6"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailySoftEtch_H2SO4);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHSoftEtch_H2SO4);
+        var jsM = @Html.Raw(ViewBag.jsonMSoftEtch_H2SO4);
+        var jsL = @Html.Raw(ViewBag.jsonLSoftEtch_H2SO4);
+
+
+        var ctx = document.getElementById("myChart6");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Soft Etch (H2SO4)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '22 - 38',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 40.00,
+                            min: 20.00,
+                            stepSize: 2.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>7.Soft Etch (Copper)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+@*<script src="../Scripts/Chart.js"></script>*@
+
+@*<canvas id="myChart"></canvas>*@
+<canvas id="myChart7"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        //Month (1 month~6 month)
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailySoftEtch_Copper);
+
+        //Three cities City,Business
+        var jsH = @Html.Raw(ViewBag.jsonHSoftEtch_Copper);
+        var jsM = @Html.Raw(ViewBag.jsonMSoftEtch_Copper);
+        var jsL = @Html.Raw(ViewBag.jsonLSoftEtch_Copper);
+
+
+        var ctx = document.getElementById("myChart7");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                //labels: ['1 month', '2 month', '3 month', '4 month', '5 month', '6 month'],
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    //label: jsBusiness[0].City,
+
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[0].Business
+                    //data: [13.1, 10.2, 13.5, 20.9, 25.2, 27.1, 31.8]
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    //label: jsBusiness[1].City,
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[1].Business
+                    //data: [29.1, 28.3, 22.6, 25.4, 27.5, 23.4]
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    //label: jsBusiness[2].City,
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    //data: jsBusiness[2].Business
+                    //data: [16.6, 17.3, 19.2, 23.8, 12.0, 17.6]
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Soft Etch (Copper)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '0 - 19',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 20.00,
+                            min: 0.00,
+                            stepSize: 2.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>8.KAT-450 (Pd)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart8"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyKAT_450_Pd);
+
+        var jsH = @Html.Raw(ViewBag.jsonHKAT_450_Pd);
+        var jsM = @Html.Raw(ViewBag.jsonMKAT_450_Pd);
+        var jsL = @Html.Raw(ViewBag.jsonLKAT_450_Pd);
+
+
+        var ctx = document.getElementById("myChart8");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU KAT-450 (Pd)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '6.5 - 13.5',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 14.00,
+                            min: 6.00,
+                            stepSize: 1.50
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>9.KAT-450(H2SO4)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart9"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyKAT_450_H2SO4);
+
+        var jsH = @Html.Raw(ViewBag.jsonHKAT_450_H2SO4);
+        var jsM = @Html.Raw(ViewBag.jsonMKAT_450_H2SO4);
+        var jsL = @Html.Raw(ViewBag.jsonLKAT_450_H2SO4);
+
+
+        var ctx = document.getElementById("myChart9");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU KAT-450(H2SO4)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '1.135 - 1.155',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 15.00,
+                            min: 5.00,
+                            stepSize: 1.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>10.KAT-450 (Copper)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart10"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyKAT_450_Copper);
+
+        var jsH = @Html.Raw(ViewBag.jsonHKAT_450_Copper);
+        var jsM = @Html.Raw(ViewBag.jsonMKAT_450_Copper);
+        var jsL = @Html.Raw(ViewBag.jsonLKAT_450_Copper);
+
+
+        var ctx = document.getElementById("myChart10");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU KAT-450 (Copper)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '0 - 140',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 150.00,
+                            min: 0.00,
+                            stepSize: 30.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>11.Electroless Ni (pH)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart11"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyElectroless_Ni_pH);
+
+        var jsH = @Html.Raw(ViewBag.jsonHElectroless_Ni_pH);
+        var jsM = @Html.Raw(ViewBag.jsonMElectroless_Ni_pH);
+        var jsL = @Html.Raw(ViewBag.jsonLElectroless_Ni_pH);
+
+
+        var ctx = document.getElementById("myChart11");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Electroless Ni (pH)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '1.150 - 1.190',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 4.80,
+                            min: 4.00,
+                            stepSize: 0.10
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>12.Electroless Ni (Ni Ion)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart12"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyElectroless_Ni_Ni_Ion);
+
+        var jsH = @Html.Raw(ViewBag.jsonHElectroless_Ni_Ni_Ion);
+        var jsM = @Html.Raw(ViewBag.jsonMElectroless_Ni_Ni_Ion);
+        var jsL = @Html.Raw(ViewBag.jsonLElectroless_Ni_Ni_Ion);
+
+
+        var ctx = document.getElementById("myChart12");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Electroless Ni (Ni Ion)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '4.22 - 5.18',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 5.20,
+                            min: 4.20,
+                            stepSize: 0.10
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>13.Electroless Ni (Sodium hypophosphite)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart13"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyElectroless_Ni_Shy);
+
+        var jsH = @Html.Raw(ViewBag.jsonHElectroless_Ni_Shy);
+        var jsM = @Html.Raw(ViewBag.jsonMElectroless_Ni_Shy);
+        var jsL = @Html.Raw(ViewBag.jsonLElectroless_Ni_Shy);
+
+
+        var ctx = document.getElementById("myChart13");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU Electroless Ni (Sodium hypophosphite)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '26.5 - 31.5',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 32.00,
+                            min: 26.00,
+                            stepSize: 1.50
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>14.Au (pH)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart14"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu_pH);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu_pH);
+        var jsM = @Html.Raw(ViewBag.jsonMAu_pH);
+        var jsL = @Html.Raw(ViewBag.jsonLAu_pH);
+
+
+        var ctx = document.getElementById("myChart14");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au (pH)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '7.1 - 7.35',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 7.40,
+                            min: 7.00,
+                            stepSize: 0.05
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>15.Au</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart15"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu);
+        var jsM = @Html.Raw(ViewBag.jsonMAu);
+        var jsL = @Html.Raw(ViewBag.jsonLAu);
+
+
+        var ctx = document.getElementById("myChart15");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '17.5 - 68',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 1.40,
+                            min: 1.00,
+                            stepSize: 0.05
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+<div>
+    <h2>16.CN</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart16"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyCN);
+
+        var jsH = @Html.Raw(ViewBag.jsonHCN);
+        var jsM = @Html.Raw(ViewBag.jsonMCN);
+        var jsL = @Html.Raw(ViewBag.jsonLCN);
+
+
+        var ctx = document.getElementById("myChart16");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : AU CN'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '0 - 12.5',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 13.00,
+                            min: 0.00,
+                            stepSize: 5.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+<div>
+    <h2>17.Au (TSB-71-B)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart17"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu_TSB_71_B);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu_TSB_71_B);
+        var jsM = @Html.Raw(ViewBag.jsonMAu_TSB_71_B);
+        var jsL = @Html.Raw(ViewBag.jsonLAu_TSB_71_B);
+
+
+        var ctx = document.getElementById("myChart17");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au (TSB-71-B)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '17.5 - 68',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 70.00,
+                            min: 15.00,
+                            stepSize: 2.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+
+<div>
+    <h2>18.Au (TSB-71-M20)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart18"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu_TSB_71_M20);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu_TSB_71_M20);
+        var jsM = @Html.Raw(ViewBag.jsonMAu_TSB_71_M20);
+        var jsL = @Html.Raw(ViewBag.jsonLAu_TSB_71_M20);
+
+
+        var ctx = document.getElementById("myChart18");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au (TSB-71-M20)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '41 - 59',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 60.00,
+                            min: 40.00,
+                            stepSize: 5.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+<div>
+    <h2>19.Au (TSB-71-R1)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart19"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu_TSB_71_R1);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu_TSB_71_R1);
+        var jsM = @Html.Raw(ViewBag.jsonMAu_TSB_71_R1);
+        var jsL = @Html.Raw(ViewBag.jsonLAu_TSB_71_R1);
+
+
+        var ctx = document.getElementById("myChart19");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au (TSB-71-R1)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '5 - 12',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 13.00,
+                            min: 4.00,
+                            stepSize: 1.00
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
+
+
+<div>
+    <h2>20.Au (A-Value)</h2>
+</div>
+
+<script src="../Scripts/Chart.min.js"></script>
+
+
+<canvas id="myChart20"></canvas>
+<script>
+        //Will JSON Information assigned to JavaScript array
+        var jsTimeDate = @Html.Raw(ViewBag.jsonTimeDailyAu_A_Value);
+
+        var jsH = @Html.Raw(ViewBag.jsonHAu_A_Value);
+        var jsM = @Html.Raw(ViewBag.jsonMAu_A_Value);
+        var jsL = @Html.Raw(ViewBag.jsonLAu_A_Value);
+
+
+        var ctx = document.getElementById("myChart20");
+        var chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: jsTimeDate,
+                datasets: [{
+                    label: "Action H",
+                    fill: false,
+                    backgroundColor: 'rgba(255,165,0,0.3)',
+                    borderColor: 'rgb(255,135,20)',
+                    pointStyle: "circle",
+                    pointBackgroundColor: 'rgb(0,222,0)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsH
+                }, {
+                    label: "Action M",
+                    fill: false,
+                    backgroundColor: 'rgba(0,255,255,0.3)',
+                    borderColor: 'rgb(0,225,255)',
+                    pointStyle: "triangle",
+                    pointBackgroundColor: 'blue',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsM
+
+                }, {
+                    label: "Action L",
+                    fill: false,
+                    backgroundColor: 'rgba(153,50,204,0.3)',
+                    borderColor: 'rgb(123,55,190)',
+                    pointStyle: "rect",
+                    pointBackgroundColor: 'rgb(220,20,60)',
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                    data: jsL
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontSize: 25,
+                    text: 'Analysis Result line : Au (A-Value)'
+                },
+                tooltips: {
+                    mode: 'point',
+                    intersect: true,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monthly',
+                            fontSize: 15
+                        },
+                        ticks: {
+                            fontSize: 10
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '2.7 - 3.9',
+                            fontSize: 12
+                        },
+                        ticks: {
+                            fontSize: 10,
+                            max: 4.00,
+                            min: 2.40,
+                            stepSize: 0.30
+
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 2000
+                }
+            }
+        });
+
+</script>
